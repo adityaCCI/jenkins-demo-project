@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="02c404d3-b483-4f27-9b48-c57b62c6e6cb" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="jenkins-demo-projectFlow" doc:id="82b83fa0-e189-4c2e-9ca8-16eb7b3138c5" >
+		<http:listener doc:name="Listener" doc:id="69bd5ece-97e4-4b69-9ecd-7005a6fb2efe" config-ref="HTTP_Listener_config" path="/jenkins"/>
+		<logger level="INFO" doc:name="Start Logger" doc:id="817e809b-9e85-4c9f-a46d-1f6ab66e6ce4" message="Flow Started"/>
+		<ee:transform doc:name="Transform Message" doc:id="b32faa12-822f-4184-b3ff-5feff864140d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message": "This is a Demo Project for Jenkins."
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End Logger" doc:id="498db0fe-9558-4674-9e12-96b63b0e9ecc" message="Flow has ended"/>
+	</flow>
+</mule>
