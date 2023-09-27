@@ -35,8 +35,8 @@
 						<muleVersion>${app.runtime}</muleVersion>
 						<!-- <username>${username}</username>
 						<password>${password}</password> -->
-						<!-- <connectedAppClientId>7ffc51af9d99455fbaf63313c892153b</connectedAppClientId>
-      <connectedAppClientSecret>D7a11275976847F4a9dB8D13F62f2e60</connectedAppClientSecret> -->
+						<connectedAppClientId>7ffc51af9d99455fbaf63313c892153b</connectedAppClientId>
+      <connectedAppClientSecret>D7a11275976847F4a9dB8D13F62f2e60</connectedAppClientSecret> 
       <connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>${project.artifactId}</applicationName>
 						<environment>${environment}</environment>
